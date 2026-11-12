@@ -14,6 +14,7 @@ public class RollBall : MonoBehaviour
     private bool roll;
 
     public float rollPower;
+    public Transform spawnPoint;
 
     public LayerMask personLayer;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -85,8 +86,13 @@ public class RollBall : MonoBehaviour
     {
         if (other.gameObject.CompareTag("BOUNDS"))
         {
-            gameObject.transform.position = startingPosition.transform.position;
+            gameObject.transform.position = spawnPoint.position;
+            gameObject.transform.rotation = Quaternion.identity;
+            rigidBody.linearVelocity = Vector3.zero; //reset velocity
+            rigidBody.angularVelocity = Vector3.zero;
+            
         }
     }
 
+  
 }
